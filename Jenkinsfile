@@ -20,5 +20,5 @@ node {
       stage('Deploy') {
       sh "deploy"
   }
-}
+
 
