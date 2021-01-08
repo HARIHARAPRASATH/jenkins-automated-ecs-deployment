@@ -16,7 +16,14 @@ node {
     sh 'docker tag demo:latest 634677623658.dkr.ecr.ap-south-1.amazonaws.com/demo:latest'
     sh 'docker push 634677623658.dkr.ecr.ap-south-1.amazonaws.com/demo:latest'
       
-  stage('Deploy') {
-      sh './deploy.sh'
+   stage('Deploy') {
+      // Override image field in taskdef file
+      sh "sed -i 's|{{image}}|${docker_repo_uri}:${last_commit}|' taskdef.json"
+      // sh "docker push ${docker_repo_uri}:"
+      // Create a new task definition revision
+      sh "aws ecs register-task-definition --execution-role-arn arn:aws:iam::853219876644:role/Jenkins --cli-input-json file://taskdef.json --region ${region}"
+      // Update service on Fargate
+      sh "aws ecs update-service --cluster ${cluster} --service v1-WebServer-Service --task-definition ${task_def_arn} --region ${region}"
   }
+}
 }
