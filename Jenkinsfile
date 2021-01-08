@@ -21,8 +21,9 @@ node {
       //sh "sed -i 's|{{image}}|${docker_repo_uri}:${last_commit}|' taskdef.json"
       // sh "docker push ${docker_repo_uri}:"
       // Create a new task definition revision
-      sh "aws ecs register-task-definition --execution-role-arn arn:aws:iam::634677623658:role/Jenkins-demo-hari/Jenkins --cli-input-json file://taskdef.json --region ap-south-1"
-      // update TASK_REVISION
+      //sh "aws ecs register-task-definition --execution-role-arn arn:aws:iam::634677623658:role/Jenkins-demo-hari/Jenkins --cli-input-json file://taskdef.json --region ap-south-1"
+      sh 'aws ecs register-task-definition --cli-input-json file://taskdef.json'
+     // update TASK_REVISION
       REVISION="(aws ecs describe-task-definition --task-definition v1-taskDefintion --region ap-south-1 | jq .taskDefinition.revision)"
      // Update service on Fargate
       sh "aws ecs update-service --cluster flask-signup-cluster --service flasksignup --task-definition v1-taskDefintion:${REVISION} --region ap-south-1"
