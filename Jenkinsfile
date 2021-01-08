@@ -24,7 +24,7 @@ node {
       // Create a new task definition revision
       sh "aws ecs register-task-definition --execution-role-arn arn:aws:iam::634677623658:role/Jenkins --cli-input-json file://taskdef.json --region ap-south-1"
       // Update service on Fargate
-      sh "aws ecs update-service --cluster WebServer --service v1-WebServer-Service --task-definition arn:aws:iam::634677623658:role --region ap-south-1"
+      sh "aws ecs update-service --cluster WebServer --service Docker-ecs-Service --task-definition arn:aws:iam::634677623658:role --region ap-south-1"
   }
 }
 
