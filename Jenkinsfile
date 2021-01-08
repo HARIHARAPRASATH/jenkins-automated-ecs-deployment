@@ -15,5 +15,6 @@ node {
     //docker.image('demo').push('latest')
     sh 'docker tag demo:latest 634677623658.dkr.ecr.ap-south-1.amazonaws.com/demo:latest'
     sh 'docker push 634677623658.dkr.ecr.ap-south-1.amazonaws.com/demo:latest'
-      
-   }
+  //call deployment script
+  sh "./ecs-deploy.sh"
+  }
