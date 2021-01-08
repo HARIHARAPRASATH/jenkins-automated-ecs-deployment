@@ -4,6 +4,7 @@ node {
   //def last_commit= sh(script: "git rev-parse --short HEAD", returnStdout: true).trim()
 
   stage 'Checkout'
+  
   git 'https://github.com/HARIHARAPRASATH/jenkins-automated-ecs-deployment.git'
   stage 'Docker build'
   docker.build('demo')
