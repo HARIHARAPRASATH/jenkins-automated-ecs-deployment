@@ -4,13 +4,13 @@ node {
   def last_commit= sh(script: "git rev-parse --short HEAD", returnStdout: true).trim()
 
   stage 'Checkout'
-  git 'repo link'
+  git 'git 'https://github.com/HARIHARAPRASATH/jenkins-automated-ecs-deployment.git''
  
   stage 'Docker build'
   docker.build('demo')
 
   stage 'Docker push'
-  docker.withRegistry('https://853219876644.dkr.ecr.us-west-2.amazonaws.com', 'ecr:us-west-2:demo-ecr-credentials') {
+  sh("eval \$(aws ecr get-login --no-include-email --region ap-south-1)"){
     docker.image('demo').push("${last_commit}")
   }
   
