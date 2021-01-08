@@ -1,5 +1,6 @@
 {
     "family": "v1-taskDefintion",
+    "taskRoleArn": "arn:aws:iam::634677623658:role/Jenkins-demo-hari",
     "containerDefinitions": [
         {
             "name": "webServer1",
