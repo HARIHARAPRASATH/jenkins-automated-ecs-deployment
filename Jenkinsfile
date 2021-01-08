@@ -22,5 +22,4 @@ stage('Deploy') {
       // Update service on Fargate
       sh "aws ecs update-service --cluster WebServer --service Docker-ecs-Service --task-definition arn:aws:iam::853219876644:role --region ap-south-1"
   }
-}
-}
+
