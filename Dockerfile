@@ -1,4 +1,4 @@
-FROM node:4.2
+FROM node:latest
 COPY . /src
 RUN cd /src && npm install
 EXPOSE 3000
