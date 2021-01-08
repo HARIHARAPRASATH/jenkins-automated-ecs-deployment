@@ -9,10 +9,13 @@ node {
   stage 'Docker build'
   docker.build('demo')
 
-  stage 'Docker push'
-  sh("eval \$(aws ecr get-login --no-include-email --region ap-south-1)"){
-    docker.image('demo').push("${last_commit}")
-  }
+stage 'Docker push'
+  sh("eval \$(aws ecr get-login --no-include-email --region ap-south-1)")
+  //docker.withRegistry('https://634677623658.dkr.ecr.ap-south-1.amazonaws.com', 'ecr.ap-south-1:demo-ecr-credentials') {
+    //docker.image('demo').push('latest')
+    sh 'docker tag demo:latest 634677623658.dkr.ecr.ap-south-1.amazonaws.com/demo:latest'
+    sh 'docker push 634677623658.dkr.ecr.ap-south-1.amazonaws.com/demo:latest'
+    }   
   
   stage('Deploy') {
       // Override image field in taskdef file
