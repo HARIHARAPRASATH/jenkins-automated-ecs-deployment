@@ -26,3 +26,4 @@ stage 'Docker push'
       sh "aws ecs update-service --cluster WebServer --service v1-WebServer-Service --task-definition arn:aws:iam::634677623658:role --region ap-south-1"
   }
 }
+}
