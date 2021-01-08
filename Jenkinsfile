@@ -9,7 +9,7 @@ node {
   stage 'Docker build'
   docker.build('demo')
 
-stage 'Docker push'
+  stage 'Docker push'
   sh("eval \$(aws ecr get-login --no-include-email --region ap-south-1)")
   //docker.withRegistry('https://634677623658.dkr.ecr.ap-south-1.amazonaws.com', 'ecr.ap-south-1:demo-ecr-credentials') {
     //docker.image('demo').push('latest')
@@ -17,7 +17,7 @@ stage 'Docker push'
     sh 'docker push 634677623658.dkr.ecr.ap-south-1.amazonaws.com/demo:latest'
     }   
   
-  stage('Deploy') {
+      stage('Deploy') {
       // Override image field in taskdef file
       sh "sed -i 's|{{image}}|634677623658.dkr.ecr.ap-south-1.amazonaws.com/demo:latest|' taskdef.json"
       // sh "docker push ${docker_repo_uri}:"
@@ -27,4 +27,4 @@ stage 'Docker push'
       sh "aws ecs update-service --cluster WebServer --service v1-WebServer-Service --task-definition arn:aws:iam::634677623658:role --region ap-south-1"
   }
 }
-}
+
