@@ -18,7 +18,7 @@ node {
     }   
   
       stage('Deploy') {
-      sh('./deploy.sh')
+      sh(""" /root/.jenkins/workspace/Node_js/build.sh""")
   }
 
 
