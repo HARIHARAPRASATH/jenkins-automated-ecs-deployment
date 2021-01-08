@@ -5,7 +5,6 @@ node {
 
   stage 'Checkout'
   git 'https://github.com/HARIHARAPRASATH/jenkins-automated-ecs-deployment.git'
- 
   stage 'Docker build'
   docker.build('demo')
 
