@@ -24,3 +24,4 @@ node {
       sh "aws ecs update-service --cluster ${cluster} --service v1-WebServer-Service --task-definition ${task_def_arn} --region ${region}"
   }
 }
+}
