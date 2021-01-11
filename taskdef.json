@@ -9,7 +9,7 @@
 		"cpu": 100,
 		"portMappings": [{
 			"containerPort": 3000,
-			"hostPort": 0,
+			"hostPort": 500,
 			"protocol": "tcp"
 		}],
 		"essential": true
