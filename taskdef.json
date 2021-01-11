@@ -13,6 +13,6 @@
 			"protocol": "tcp"
 		}],
 	        "essential": true,
-	}],
+	}]
 
 }
