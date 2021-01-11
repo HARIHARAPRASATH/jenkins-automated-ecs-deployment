@@ -1,14 +1,16 @@
 {
-"containerDefinitions": [{
+	"family": "v1-taskDefintion",
+	"taskRoleArn": "arn:aws:iam::634677623658:role/Jenkins-demo-hari",
+	"containerDefinitions": [{
 		"name": "webServer1",
 		"image": "634677623658.dkr.ecr.ap-south-1.amazonaws.com/demo:latest",
-		"memory": 500,
-		"memory": 400,
-		"memoryReservation": 300,
+		"memory": 300,
+		"memoryReservation": 250,
 		"cpu": 100,
 		"portMappings": [{
 			"containerPort": 3000,
-			"hostPort": 500,
+			"hostPort": 0,
+			"hostPort": 80,
 			"protocol": "tcp"
 		}],
 		"essential": true
