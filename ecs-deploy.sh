@@ -4,11 +4,11 @@ set -x
 PATH=$PATH:/usr/local/bin; export PATH
 REGION=ap-south-1
 REPOSITORY_NAME=demo
-CLUSTER=flask-signup-cluster1
+CLUSTER=flask-signup-cluster
 FAMILY=`sed -n 's/.*"family": "\(.*\)",/\1/p' taskdef.json`
 NAME=`sed -n 's/.*"name": "\(.*\)",/\1/p' taskdef.json`
 SERVICE_NAME=${NAME}-service
-#DESIRED_COUNT="1"
+DESIRED_COUNT="1"
 env
 aws configure list
 echo $HOME
@@ -29,6 +29,6 @@ REVISION=`aws ecs describe-task-definition --task-definition v1-taskDefintion | 
 #if["SERVICES"=="];then
 #echo"entering to existing service"
 #DESIRED COUNT CHECK
-DESIRED_COUNT=`aws ecs describe-services  --service ${SERVICE_NAME} --cluster ${CLUSTER} --region ${REGION} | jq .services[].desiredCount`
+#DESIRED_COUNT=`aws ecs describe-services  --service ${SERVICE_NAME} --cluster ${CLUSTER} --region ${REGION} | jq .services[].desiredCount`
 #aws ecs update-service --cluster ${CLUSTER} --region ${REGION} --service ${SERVICE_NAME} --task-definition ${FAMILY}:${REVISION} --desired-count ${DESIRED_COUNT}
 aws ecs update-service --cluster ${CLUSTER} --region ${REGION} --service ${SERVICE_NAME}  --task-definition ${FAMILY}:${REVISION} --force-new-deployment --desired-count ${DESIRED_COUNT}
