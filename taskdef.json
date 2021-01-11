@@ -12,7 +12,7 @@
 			"hostPort": 500,
 			"protocol": "tcp"
 		}],
-	
+	        "essential": true,
 	}],
 
 }
