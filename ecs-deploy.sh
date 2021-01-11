@@ -22,13 +22,13 @@ aws ecs register-task-definition --family ${FAMILY} --cli-input-json file:///roo
 #REVISION=`aws ecs describe-task-definition --task-definition v1-taskDefintion | egrep "revision" | tr "/" " " | awk '{print $2}' | sed 's/"$//'`
 REVISION=`aws ecs describe-task-definition --task-definition v1-taskDefintion | egrep "revision" | tr "/" " " | awk '{print $2}' | sed 's/"$//' | cut -d ","  -f 1`
 #FAILURECHECK
-SERVICES=` aws ecs describe-services  --service ${SERVICE_NAME} --cluster ${CLUSTER} --region REGION | jq.failures[]`
+SERVICES=`aws ecs describe-services  --service ${SERVICE_NAME} --cluster ${CLUSTER} --region ${REGION} | jq.failures[]`
 #DESIRED COUNT CHECK
 #DESIRED_COUNT=`aws ecs describe-services  --service ${SERVICE_NAME} --cluster ${CLUSTER} --region REGION | jq .services[].desiredCount`
 #Create and update service
 #if["SERVICES"=="];then
 echo"entering to existing service"
 #DESIRED COUNT CHECK
-DESIRED_COUNT=`aws ecs describe-services  --service ${SERVICE_NAME} --cluster ${CLUSTER} --region REGION | jq .services[].desiredCount`
+DESIRED_COUNT=`aws ecs describe-services  --service ${SERVICE_NAME} --cluster ${CLUSTER} --region ${REGION} | jq .services[].desiredCount`
 #aws ecs update-service --cluster ${CLUSTER} --region ${REGION} --service ${SERVICE_NAME} --task-definition ${FAMILY}:${REVISION} --desired-count ${DESIRED_COUNT}
 aws ecs update-service --cluster ${CLUSTER} --region ${REGION} --service ${SERVICE_NAME} --force-new-deployment --task-definition ${FAMILY}:${REVISION} --desired-count ${DESIRED_COUNT}
