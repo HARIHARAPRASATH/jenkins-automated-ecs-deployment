@@ -3,7 +3,7 @@
 	"taskRoleArn": "arn:aws:iam::634677623658:role/Jenkins-demo-hari",
 	"containerDefinitions": [{
 		"name": "webServer1",
-		"image": "634677623658.dkr.ecr.ap-south-1.amazonaws.com/demo:latest",
+		"image": "634677623658.dkr.ecr.ap-south-1.amazonaws.com/flask-signup:latest",
 		"memory": 100,
 		"memoryReservation": 100,
 		"cpu": 100,
