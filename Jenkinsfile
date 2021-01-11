@@ -13,10 +13,10 @@ node {
   sh("eval \$(aws ecr get-login --no-include-email --region ap-south-1)")
   //docker.withRegistry('https://634677623658.dkr.ecr.ap-south-1.amazonaws.com', 'ecr.ap-south-1:demo-ecr-credentials') {
     //docker.image('demo').push('latest')
-    sh 'docker tag demo:latest 634677623658.dkr.ecr.ap-south-1.amazonaws.com/flask-signup:latest'
+    sh 'docker tag flask-signup:latest 634677623658.dkr.ecr.ap-south-1.amazonaws.com/flask-signup:latest'
     sh 'docker push 634677623658.dkr.ecr.ap-south-1.amazonaws.com/flask-signup:latest'
   // Permission to execute
-//sh "chmod +x -R *.sh"
+     sh "chmod +x -R *.sh"
   //call deployment script
-  //sh "./ecs-deploy.sh"
+   sh "./ecs-deploy.sh"
   }
