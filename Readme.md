@@ -32,6 +32,7 @@ First, checkout this project locally and then follow these steps:
 - List all local images: `docker images`
 - Remove an image: `docker rmi <image-id>`
 - Remove a container: `docker rm <container-id>`
+created by Hari
 
 
 ## Further Reading
