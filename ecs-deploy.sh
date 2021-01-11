@@ -4,7 +4,7 @@ set -x
 PATH=$PATH:/usr/local/bin; export PATH
 REGION=ap-south-1
 REPOSITORY_NAME=demo
-CLUSTER=flask-signup-cluster
+CLUSTER=flask-signup-cluster1
 FAMILY=`sed -n 's/.*"family": "\(.*\)",/\1/p' taskdef.json`
 NAME=`sed -n 's/.*"name": "\(.*\)",/\1/p' taskdef.json`
 SERVICE_NAME=${NAME}-service
