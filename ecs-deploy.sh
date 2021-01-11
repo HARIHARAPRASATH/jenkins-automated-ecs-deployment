@@ -22,4 +22,4 @@ aws ecs register-task-definition --family ${FAMILY} --cli-input-json file:///roo
 #REVISION=`aws ecs describe-task-definition --task-definition v1-taskDefintion | egrep "revision" | tr "/" " " | awk '{print $2}' | sed 's/"$//'`
 REVISION=`aws ecs describe-task-definition --task-definition v1-taskDefintion | egrep "revision" | tr "/" " " | awk '{print $2}' | sed 's/"$//' | cut -d ","  -f 1`
 #aws ecs update-service --cluster ${CLUSTER} --region ${REGION} --service ${SERVICE_NAME} --task-definition ${FAMILY}:${REVISION} --desired-count ${DESIRED_COUNT}
-aws ecs update-service --cluster ${CLUSTER} --region ${REGION} --service ${SERVICE_NAME} --task-definition ${FAMILY}:${REVISION} --desired-count ${DESIRED_COUNT}
+aws ecs update-service --cluster ${CLUSTER} --region ${REGION} --service ${SERVICE_NAME} --force-new-deployment --task-definition ${FAMILY}:${REVISION} --desired-count ${DESIRED_COUNT}
