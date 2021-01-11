@@ -1,3 +1,4 @@
+{
 "containerDefinitions": [{
 		"name": "webServer1",
 		"image": "634677623658.dkr.ecr.ap-south-1.amazonaws.com/demo:latest",
