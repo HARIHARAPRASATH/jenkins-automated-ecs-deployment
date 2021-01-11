@@ -31,4 +31,4 @@ REVISION=`aws ecs describe-task-definition --task-definition v1-taskDefintion | 
 #DESIRED COUNT CHECK
 #DESIRED_COUNT=`aws ecs describe-services  --service ${SERVICE_NAME} --cluster ${CLUSTER} --region ${REGION} | jq .services[].desiredCount`
 #aws ecs update-service --cluster ${CLUSTER} --region ${REGION} --service ${SERVICE_NAME} --task-definition ${FAMILY}:${REVISION} --desired-count ${DESIRED_COUNT}
-aws ecs update-service --cluster ${CLUSTER} --region ${REGION} --service ${SERVICE_NAME}  --task-definition ${FAMILY}:${REVISION} --force-new-deployment --desired-count ${DESIRED_COUNT}
+aws ecs update-service --cluster ${CLUSTER} --region ${REGION} --service ${SERVICE_NAME}  --task-definition ${FAMILY}:${REVISION} --desired-count ${DESIRED_COUNT} --force-new-deployment
